@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>In-Screen Unit Generator</title>
+        <link rel="shortcut icon" href="../img/favicon.ico" />
+        <meta name="description" content="GumGum In-Screen Unit Generator">
+        <meta name="author" content="Myles O'Connor">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="../js/app.js"></script>
+    </head>
+    <body ng-app="AdGenerator" ng-cloak>
+        <div class="container" ng-controller="InScreenGeneratorCtrl">
+            <img class="logo" src="../img/logo.svg" />
+            <ul class="nav nav-tabs">
+                <li role="presentation"><a href="studio.html">Studio</a></li>
+                <li role="presentation"><a href="runway.html">Runway</a></li>
+                <li role="presentation" class="active"><a href="#">In-Screen</a></li>
+                <li role="presentation"><a href="canvas.html">Canvas</a></li>
+                <li role="presentation"><a href="lightbox.html">Lightbox</a></li>
+            </ul>
+            <h1>In-Screen Unit Generator</h1>
+            <ul>
+                <li>In-Screen units must be provided as one 100% x 100px Hype file, with breakpoint scenes inside</li>
+                <li>Edit all scenes within the Hype file to click out (in appropriate areas) with: <code>openAd(hypeDocument, element, event);</code></li>
+                <li>Save as <kbd>inscreen.hyperesources</kbd></li>
+                <li>Upload .hyperesources folder to a CDN directory</li>
+            </ul>
+            <hr>
+            <form name="form">
+                <div class="radio">
+                    <label>
+                        <input ng-model="buttonShade" type="radio" value="dark" checked>
+                        Dark buttons on light background
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input ng-model="buttonShade" type="radio" value="light">
+                        Light buttons on dark background
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Paste CDN path to directory here:</label>
+                    <input ng-model="pastedDirectoryPath" ng-change="formatPathInput()" type="url" class="form-control" placeholder="http://gumgum-content.s3.amazonaws.com/ads/com/att/youth_q1_2015/inscreen/01/rollover_sandy/" required>
+                </div>
+                <button type="submit" class="btn btn-default btn-primary" ng-click="generateInScreenMarkup()" ng-disabled="form.$invalid">Generate In-Screen Markup</button> 
+            </form>
+            <div ng-show="markupGenerated" class="generated-markup">
+                <hr>
+                <div class="form-group">
+                    <label>Generated In-Screen Markup:</label>
+                    <textarea class="form-control">{{ formattedInScreenMarkup }}</textarea>
+                </div>
+                <button class="btn btn-default" ng-click="resetForm()">Clear Results</button>
+            </div>
+        </div>
+    </body>
+</html>

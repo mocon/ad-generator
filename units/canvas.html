@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Canvas Unit Generator</title>
+        <link rel="shortcut icon" href="../img/favicon.ico" />
+        <meta name="description" content="GumGum Canvas Unit Generator">
+        <meta name="author" content="Myles O'Connor">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="../js/app.js"></script>
+    </head>
+    <body ng-app="AdGenerator" ng-cloak>
+        <div class="container" ng-controller="CanvasGeneratorCtrl">
+            <img class="logo" src="../img/logo.svg" />
+            <ul class="nav nav-tabs">
+                <li role="presentation"><a href="studio.html">Studio</a></li>
+                <li role="presentation"><a href="runway.html">Runway</a></li>
+                <li role="presentation"><a href="inscreen.html">In-Screen</a></li>
+                <li role="presentation" class="active"><a href="#">Canvas</a></li>
+                <li role="presentation"><a href="lightbox.html">Lightbox</a></li>
+            </ul>
+            <h1>Canvas Unit Generator</h1>
+            <ul>
+                <li>Canvas units must be provided as (2) 100% x 100% Hype files, one designed at 400px x 400px and one at 600px x 600px</li>
+                <li>Save as <kbd>canvas400.hyperesources</kbd> and <kbd>canvas600.hyperesources</kbd></li>
+                <li>Upload both .hyperesources folders to the same CDN directory</li>
+            </ul>
+            <hr>
+            <form name="form">
+                <div class="form-group">
+                    <label>Paste CDN path to directory here:</label>
+                    <input ng-model="pastedDirectoryPath" ng-change="formatPathInput()" type="url" class="form-control" placeholder="http://gumgum-content.s3.amazonaws.com/ads/com/ca_milk_pb/fy15_digital/canvas/00/" required>
+                </div>
+                <button type="submit" class="btn btn-default btn-primary" ng-click="generateCanvasMarkup()" ng-disabled="form.$invalid">Generate Canvas Markup</button> 
+            </form>
+            <div ng-show="markupGenerated" class="generated-markup">
+                <hr>
+                <div class="form-group">
+                    <label>Generated Canvas Markup:</label>
+                    <textarea class="form-control">{{ formattedCanvasMarkup }}</textarea>
+                </div>
+                <button class="btn btn-default" ng-click="resetForm()">Clear Results</button>
+            </div>
+        </div>
+    </body>
+</html>

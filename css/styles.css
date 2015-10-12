@@ -1,0 +1,97 @@
+@font-face{
+	font-family:'ag2';
+	src:url("../fonts/alternate-gothic-2-webfont.eot");
+	src:url("../fonts/alternate-gothic-2-webfont.eot?#iefix") format("embedded-opentype"),url("../fonts/alternate-gothic-2-webfont.woff") format("woff"),url("../fonts/alternate-gothic-2-webfont.ttf") format("truetype"),url("../fonts/alternate-gothic-2-webfont.svg#ag2") format("svg");font-weight:300;font-style:normal}
+$ag2: 'ag2';
+@font-face{
+	font-family:"pnr";
+	src:url("../fonts/pns-regular-webfont.eot");
+	src:url("../fonts/pns-regular-webfont.eot?#iefix") format("embedded-opentype");src:url("../fonts/pns-regular-webfont.woff") format("woff");src:url("../fonts/pns-regular-webfont.ttf") format("truetype");font-style:normal;font-weight:normal}
+@font-face{
+	font-family:"pnr";
+	src:url("../fonts/pns-light-webfont.eot");
+	src:url("../fonts/pns-light-webfont.eot?#iefix") format("embedded-opentype");src:url("../fonts/pns-light-webfont.woff") format("woff");src:url("../fonts/pns-light-webfont.ttf") format("truetype");font-style:normal;font-weight:100}
+@font-face{
+	font-family:"pnr";
+	src:url("../fonts/pns-semibold-webfont.eot");
+	src:url("../fonts/pns-semibold-webfont.eot?#iefix") format("embedded-opentype");src:url("../fonts/pns-semibold-webfont.woff") format("woff");src:url("../fonts/pns-semibold-webfont.ttf") format("truetype");font-style:normal;font-weight:700}
+@font-face{
+	font-family:"pnr";
+	src:url("../fonts/pns-bold-webfont.eot");
+	src:url("../fonts/pns-bold-webfont.eot?#iefix") format("embedded-opentype");src:url("../fonts/pns-bold-webfont.woff") format("woff");src:url("../fonts/pns-bold-webfont.ttf") format("truetype");font-style:normal;font-weight:900}
+@font-face{
+	font-family:"pnr";
+	src:url("../fonts/pns-regitalic-webfont.eot");
+	src:url("../fonts/pns-regitalic-webfont.eot?#iefix") format("embedded-opentype");src:url("../fonts/pns-regitalic-webfont.woff") format("woff");src:url("../fonts/pns-regitalic-webfont.ttf") format("truetype");font-style:italic;font-weight:normal}
+
+/* TEMPORARY, so that Angular Inspector doesn't cover the layout */
+/* .container {width: 960px; margin: 0 40px;}
+/* ************************************************************* */
+
+body {
+    background: #eee;
+    color: #333;
+    font-family: "pnr";
+    font-weight: 300;
+    margin-bottom: 100px;
+}
+
+.logo {
+    width: 200px;
+    margin: 20px 0 5px;
+}
+
+.nav-tabs {
+    margin-bottom: 30px;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    background-color: #eee;
+}
+
+hr {
+    border-top: 1px solid #ccc;
+}
+
+h3 {
+    margin: 0 0 20px;
+}
+
+.add-ct {
+    margin-top: -4px;
+}
+
+ul {
+    list-style-position: inside;
+    margin: 20px 0;
+    padding-left: 0;
+}
+
+.click-tracker {
+    position: relative;
+}
+
+.remove {
+    position: absolute;
+    right: -57px;
+    top: 49px;
+}
+
+pre {
+    margin: 10px 0;
+}
+
+label, input[type="text"], textarea {
+    display: block;
+    width: 100%;
+    font-weight: 300;
+}
+
+.generated-markup textarea, .generated-markup input[type="text"] {
+    font-family: monospace;
+    font-size: 12px;
+}
+
+.generated-markup textarea {
+    height: 150px;
+}

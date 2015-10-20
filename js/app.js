@@ -77,6 +77,49 @@ app.controller("StudioGeneratorCtrl", ['$scope', '$timeout', function($scope, $t
 }]);
 
 
+// //////////////
+// Studio 728x 90
+// //////////////
+app.controller("Studio728GeneratorCtrl", ['$scope', '$timeout', function($scope, $timeout) {
+    
+    console.log("GumGum Studio 728x90 Unit Generator");
+    
+    $scope.setDefaults = function(){
+        $scope.pastedBackgroundPath = "";
+        $scope.markupGenerated = false;
+        $scope.spritePrefixDisp = "name";
+    }
+    $scope.setDefaults();
+    
+    $scope.formatPathInput = function(){
+        // Formatted background tile path // TO DO: Support multiple URL structures such as http://d1u2cbczpt82kt.cloudfront.net/ads/com... //
+        var awsPattern = "http://gumgum-content.s3.amazonaws.com";
+        var awsString = $scope.pastedBackgroundPath.replace(awsPattern, "//c.gumgum.com");
+        $scope.formBgPath = awsString;
+        // Sprite name prefix
+        var spritePrefixArray = $scope.pastedBackgroundPath.match(/\/([^\/]*)\_tile/i);
+        $scope.spritePrefix = spritePrefixArray[1];
+        $scope.spritePrefixDisp = $scope.spritePrefix;
+        // Path prefix
+        $scope.pathPrefix = $scope.formBgPath.substr(0, $scope.formBgPath.length-$scope.spritePrefix.length-9);
+        // Assemble markup
+        $scope.escAssembledStudio728Markup = "<div id=\"mGGUID\" align=\"left\" style=\"text-align:left;height:90px;position:relative;font:normal 0/90px arial;border:none;padding:0;margin:0;overflow:visible !important;font:normal 0/90px arial; cursor:pointer; background: none transparent;padding-top:0;box-sizing:content-box;-moz-box-sizing:content-box;\"><div align=\"left\" id=\"adGGUID\" style=\"text-align:left;height:100%;position:relative;overflow:hidden;margin:0px 0px 0px 0px;font:normal 0/120px arial; cursor:pointer;\"><br style=\"display:none;\" /><style>#imGGUID, #coGGUID, #bgGGUID {-moz-transform-origin: center center; -webkit-transform-origin: center center; -o-transform-origin: center center; -ms-transform-origin: center center; transform-origin: center center;} #adGGUID, #adGGUID * {padding:0;margin:0;border:none;font:normal 0/90px arial;cursor:pointer} #hoGGUID {background:transparent url('//c.gumgum.com/ads/com/gumgum/bg/trans.gif') no-repeat scroll 0 0;position:absolute; width: 100%; height: 100%; left: 0px; top: 0px;} #hoGGUID:hover {cursor:pointer;} #bgGGUID {width: 100%; height: 100%;margin-left: 0px;background: url('" + $scope.formBgPath + "') repeat-x scroll 0px 0px;} #imGGUID {position:absolute;top:0px;left:0px;} #coGGUID {background-image: url('" + $scope.pathPrefix + $scope.spritePrefix + "_728.png'); background-repeat:no-repeat; background-position: 0px -90px; display:none;position:absolute;width: 728px; height: 178px; left: 0px; top: 0px;overflow: hidden;}</style><img id=\"imGGUID\" src=\"//c.gumgum.com/images/pixel.gif?GGUID\" onload='(function(e){ var c = document.getElementById(\"coGGUID\"); var im = document.getElementById(\"imGGUID\"); var bg = document.getElementById(\"bgGGUID\"); var t = document.getElementById(\"mGGUID\"); var u = \"" + $scope.pathPrefix + $scope.spritePrefix + "_728.png\"; if ([assetWidth] < 728) { var ratio = [assetWidth] / 728; var offset = -((728 - [assetWidth]) / 2) + \"px\"; var css = \"#mGGUID .scaled {-moz-transform: scale(\"+ratio+\"); -webkit-transform: scale(\"+ratio+\"); -o-transform: scale(\"+ratio+\"); -ms-transform: scale(\"+ratio+\"); transform: scale(\"+ratio+\"); margin-left: \"+offset+\";}\"; var style = document.createElement(\"style\"); style.type = \"text/css\"; style.appendChild(document.createTextNode(css)); t.appendChild(style); c.className += \"scaled\"; im.className += \"scaled\"; bg.style.display = \"none\"; } e.src=u; e.onload=false;return false})(this)' /><div id=\"coGGUID\"></div><div id=\"bgGGUID\" style=\"margin-left:0;\"></div><a id=\"hoGGUID\" onmouseover=\"document.getElementById('coGGUID').style.display='block';\" onmouseout=\"document.getElementById('coGGUID').style.display='none';\"></a></div><!--begintags--><!--endtags--></div>";
+        $scope.formattedStudio728Markup = $scope.escAssembledStudio728Markup.replace(/\\"/g, '"');
+    }
+    
+    $scope.generateStudio728Markup = function(){
+        $scope.formatPathInput();
+        $scope.markupGenerated = true;
+        $timeout(function(){$("textarea").select();},100);
+    }
+    
+    $scope.resetForm = function(){
+        $scope.setDefaults();
+        $timeout(function(){$("input").focus();},100);
+    }
+}]);
+
+
 // //////
 // Runway
 // //////

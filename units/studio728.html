@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <title>Canvas Unit Generator</title>
+        <meta charset="utf-8">        
+        <title>Studio 728x90 Unit Generator</title>
         <link rel="shortcut icon" href="../img/favicon.ico" />
-        <meta name="description" content="GumGum Canvas Unit Generator">
+        <meta name="description" content="GumGum Studio Unit Generator">
         <meta name="author" content="Myles O'Connor">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -14,38 +14,41 @@
         <script src="../js/app.js"></script>
     </head>
     <body ng-app="AdGenerator" ng-cloak>
-        <div class="container" ng-controller="CanvasGeneratorCtrl">
+        
+        <div class="container" ng-controller="Studio728GeneratorCtrl">
             <img class="logo" src="../img/logo.svg" />
             <ul class="nav nav-tabs">
                 <li role="presentation"><a href="studio.html">Studio</a></li>
-                <li role="presentation"><a href="studio728.html">Studio 728x90</a></li>
+                <li role="presentation" class="active"><a href="#">Studio 728x90</a></li>
                 <li role="presentation"><a href="runway.html">Runway</a></li>
                 <li role="presentation"><a href="inscreen.html">In-Screen</a></li>
-                <li role="presentation" class="active"><a href="#">Canvas</a></li>
+                <li role="presentation"><a href="canvas.html">Canvas</a></li>
                 <li role="presentation"><a href="lightbox.html">Lightbox</a></li>
             </ul>
-            <h1>Canvas Unit Generator</h1>
+            <h1>Studio 728x90 Unit Generator</h1>
             <ul>
-                <li>Canvas units must be provided as (2) 100% x 100% Hype files, one designed at 400px x 400px and one at 600px x 600px</li>
-                <li>Save as <kbd>canvas400.hyperesources</kbd> and <kbd>canvas600.hyperesources</kbd></li>
-                <li>Upload both .hyperesources folders to the same CDN directory</li>
+                <li>Save 728px x 180px sprite as <kbd>{{ spritePrefixDisp }}_728.png</kbd></li>
+                <li>Save 90px repeating tile as <kbd>{{ spritePrefixDisp }}_tile.png</kbd></li>
+                <li>Upload both images to the same CDN directory</li>
             </ul>
             <hr>
             <form name="form">
                 <div class="form-group">
-                    <label>Paste CDN path to directory here:</label>
-                    <input ng-model="pastedDirectoryPath" ng-change="formatPathInput()" type="url" class="form-control" placeholder="http://gumgum-content.s3.amazonaws.com/ads/com/ca_milk_pb/fy15_digital/canvas/00/" required>
+                    <label>Paste CDN path to background tile here:</label>
+                    <input ng-model="pastedBackgroundPath" ng-change="formatPathInput()" type="url" class="form-control" placeholder="http://gumgum-content.s3.amazonaws.com/ads/com/gumgum/tests/728x90_template/mud_tile.png" required>
                 </div>
-                <button type="submit" class="btn btn-default btn-primary" ng-click="generateCanvasMarkup()" ng-disabled="form.$invalid">Generate Canvas Markup</button> 
+                <button type="submit" class="btn btn-default btn-primary" ng-click="generateStudio728Markup()" ng-disabled="form.$invalid">Generate Studio 728x90 Markup</button> 
             </form>
+            <!-- Studio 728x90 Unit generated markup -->
             <div ng-show="markupGenerated" class="generated-markup">
                 <hr>
                 <div class="form-group">
-                    <label>Generated Canvas Markup:</label>
-                    <textarea class="form-control">{{ formattedCanvasMarkup }}</textarea>
+                    <label>Generated Studio 728x90 Markup:</label>
+                    <textarea class="form-control">{{ formattedStudio728Markup }}</textarea>
                 </div>
                 <button class="btn btn-default" ng-click="resetForm()">Clear Results</button>
             </div>
-        </div>
+        </div><!-- .container -->
+        
     </body>
 </html>

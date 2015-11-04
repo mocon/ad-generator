@@ -278,7 +278,7 @@ app.controller("LightboxGeneratorCtrl", ['$scope', '$timeout', function($scope, 
     
     $scope.formatPathInput = function(){
         var awsPattern = "http://gumgum-content.s3.amazonaws.com";
-        var awsString = $scope.pastedDirectoryPath.replace(awsPattern, "//c.gumgum.com");
+        var awsString = $scope.pastedDirectoryPath.replace(awsPattern, "https://c.gumgum.com");
         $scope.formDirPath = awsString;
         // Autodetect sprite height
         $scope.spriteUrl = $scope.formDirPath + "lightbox_bg.png";
